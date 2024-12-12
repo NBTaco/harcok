@@ -24,6 +24,7 @@ const hetediksor1 = "Angolok(York + Lancester)" //7. sor 1. cella, string, heted
 const hetediksor2 = "15.000" //7. sor 2. cella, string, hetediksor2 változóba
 */
 
+/*
 const fajlecObj = { //fejléc objektum, benne van a harc, felek, és a haderő
     harc: "Harc megnevezése", //fejléc objektum harc tulajdonsága, ez a "Harc megnevezése" stringet tartalmazza
     felek: "Szembenálló felek", //fejléc objektum felek tulajdonsága, ez a "Szembenálló felek" stringet tartalmazza
@@ -68,7 +69,47 @@ const hetediksorObj = { //hetedik sor objektuma, benne van a harc, fél, haderő
     fel: "Angolok(York + Lancester)", //hetedik sor objektumának fel tulajdonsága, ez a "Angolok(York + Lancester)" stringet tartalmazza
     hadero: "15.000" //hetedik sor objektumának hadero tulajdonsága, ez a "15.000" stringet tartalmazza
 }
+*/
 
+const tomb = [ //tomb letrehozasa, a tömb eleminek száma mindig egyel több, mint az indexe
+    { 
+        harc: "Harc megnevezése", //tömb első (0.) elemének harc tulajdonsága, "Harc megnevezése" stringet tárolja
+        felek: "Szembenálló felek", //tömb első elemének felek tulajdonsága, "Szembenálló felek" stringet tárolja
+        hadero: "Haderő" //tömb első elemének hadero tulajdonsága, "Haderő" stringet tárolja
+    },
+    { 
+        harc: "Rákóczi szabadságharc", //tömb második elemének harc tulajdonsága, "Rákóczi szabadságharc"stringet tárolja
+        fel: "Kuruc", //tömb második elemének fel tulajdonsága, "Kuruc" stringet tárolja
+        hadero: "70.000" //tömb második elemének hadero tulajdonsága, "70.000" stringet tárolja
+    },
+    {
+        fel: "Labanc", //tömb harmadik elemének fel tulajdonsága, "Labanc" stringet tárolja
+        hadero: "60.000" //tömb harmadik elemének hadero tulajdonsága, "60.000" stringet tárolja
+    },
+    { 
+        harc: "48-as szabadságharc", //tömb negyedik elemének harc tulajdonsága, "48-as szabadságharc" stringet tárolja
+        fel: "Osztrák császárság(+ Orosz birodalom)", //tömb negyedik elemének fel tulajdonsága, "Osztrák császárság(+ Orosz birodalom)" stringet tárolja
+        hadero: "170.000(+ 200.000)" //tömb negyedik elemének hadero tulajdonsága, "170.000(+ 200.000)" stringet tárolja
+    },
+    { 
+        fel: "Magyar királyság", //tömb ötödik elemének fel tulajdonsága, "Magyar királyság" stringet tárolja
+        hadero: "170.000" //tömb ötödik elemének hadero tulajdonsága, "170.000" stringet tárolja
+    },
+    {
+        harc: "I. világháború", //tömb hatodik elemének harc tulajdonsága, "I. világháború" stringet tárolja
+        fel: "Antant", //tömb hatodik elemének fel tulajdonsága, "Antant" stringet tárolja
+        hadero: "43 millió" //tömb hatodik elemének hadero tulajdonsága, "43 millió" stringet tárolja
+    },
+    {
+        fel: "Központi hatalmak", //tömb hetedik elemének fel tulajdonsága, "Központi hatalmak" stringet tárolja
+        hadero: "25 millió" //tömb hetedik elemének hadero tulajdonsága, "25 millió" stringet tárolja
+    },
+    { 
+        harc: "Bosworthi csata", //tömb nyolcadik elemének harc tulajdonsága, "Bosworthi csata" stringet tárolja
+        fel: "Angolok(York + Lancester)", //tömb nyolcadik elemének fel tulajdonsága, "Angolok(York + Lancester)" stringet tárolja
+        hadero: "15.000"//tömb nyolcadik elemének hadero tulajdonsága, "15.000" stringet tárolja
+    }
+]
 
 
 
@@ -84,15 +125,15 @@ const theadrow1 = document.createElement('tr') //létrehozunk egy tr- elemet, cr
 thead.appendChild(theadrow1) //a tr elemet hozzáadjuk a thead- hez
 
 const theadcell1 = document.createElement('td') //létrehozunk egy td- elemet, createElement bementi paramétere string (ez lesz a html tag)
-theadcell1.innerHTML = fajlecObj.harc //meghivjuk a fejléc objetum harc tulajdonságát
+theadcell1.innerHTML = tomb[0].harc //a tomb 0. elemének a harc tulajdonsága
 theadrow1.appendChild(theadcell1) //a td elemet hozzáadjuk a tr- hez
  
 const theadcell2 = document.createElement('td') //létrehozunk egy td- elemet, createElement bementi paramétere string (ez lesz a html tag)
-theadcell2.innerHTML = fajlecObj.felek //meghivjuk a fejléc objetum felek tulajdonságát
+theadcell2.innerHTML = tomb[0].felek //a tomb 0. elemének a felek tulajdonsága
 theadrow1.appendChild(theadcell2) //a td elemet hozzáadjuk a tr- hez
 
 const theadcell3 = document.createElement('td') //létrehozunk egy td- elemet, createElement bementi paramétere string (ez lesz a html tag)
-theadcell3.innerHTML = fajlecObj.hadero //meghivjuk a fejléc objetum hadero tulajdonságát
+theadcell3.innerHTML = tomb[0].hadero //a tomb 0. elemének a hadero tulajdonsága
 theadrow1.appendChild(theadcell3) //a td elemet hozzáadjuk a tr- hez
 
 //tbody- megcsinálása, és az elemeinek hozzáadása
@@ -108,23 +149,23 @@ tbody.appendChild(tbodyrow2) //az 2. sort hozzáadjuk a tbody- hoz
 
 const row1td1 = document.createElement('td') //létrehozzuk az 1. sor 1. celláját (td), createElement bementi paramétere string (ez lesz a html tag)
 row1td1.rowSpan = 2 //beállítjuk a rowSpant a cellára
-row1td1.innerHTML = elsosorObj.harc //meghivjuk az elsosor objektum harc tulajdonsagat
+row1td1.innerHTML = tomb[1].harc //a tomb elso elemenek a harc tulajdonsaga
 tbodyrow1.appendChild(row1td1) //hozzáadjuk a cellát az 1. sorhoz
 
 const row1td2 = document.createElement('td') //létrehozzuk az 1. sor 2. celláját (td), createElement bementi paramétere string (ez lesz a html tag)
-row1td2.innerHTML = elsosorObj.fel //meghivjuk az elsosor objektum fel tulajdonsagat
+row1td2.innerHTML = tomb[1].fel //a tomb elso elemenek a fel tulajdonsaga
 tbodyrow1.appendChild(row1td2) //hozzáadjuk a cellát az 1. sorhoz
 
 const row1td3 = document.createElement('td') //létrehozzuk az 1. sor 3. celláját (td), createElement bementi paramétere string (ez lesz a html tag)
-row1td3.innerHTML = elsosorObj.hadero //meghivjuk az elsosor objektum hadero tulajdonsagat
+row1td3.innerHTML = tomb[1].hadero //a tomb elso elemenek a hadero tulajdonsaga
 tbodyrow1.appendChild(row1td3) //hozzáadjuk a cellát az 1. sorhoz
 
 const row2td1 = document.createElement('td') //létrehozzuk a 2. sor 1. celláját (td)- ez a középső cella lesz, mvel az első a rowSpan miatt már megvan, createElement bementi paramétere string (ez lesz a html tag)
-row2td1.innerHTML = masodiksorObj.fel //meghivjuk az masodiksor objektum fel tulajdonsagat
+row2td1.innerHTML = tomb[2].fel //a tomb madosik elemenek a fel tulajdonsaga
 tbodyrow2.appendChild(row2td1) //hozzáadjuk a cellát a 2. sorhoz
 
 const row2td2 = document.createElement('td') //létrehozzuk a 2. sor 2. celláját (td)- ,utolsó cella, createElement bementi paramétere string (ez lesz a html tag)
-row2td2.innerHTML = masodiksorObj.hadero //meghivjuk az masodiksor objektum hadero tulajdonsagat
+row2td2.innerHTML = tomb[2].fel //a tomb madosik elemenek a hadero tulajdonsaga
 tbodyrow2.appendChild(row2td2) //hozzáadjuk a cellát a 2. sorhoz
 
 // 2. sor
@@ -136,23 +177,23 @@ tbody.appendChild(tbodyrow4) //a 4. sort hozzáadjuk a tbody- hoz
 
 const row3td1 = document.createElement('td') //létrehozzuk az 3. sor 1. celláját (td), createElement bementi paramétere string (ez lesz a html tag)
 row3td1.rowSpan = 2 //beállítjuk a rowSpant a cellára
-row3td1.innerHTML = harmadiksorObj.harc //meghivjuk az harmadiksor objektum harc tulajdonsagat
+row3td1.innerHTML = tomb[3].harc //a tomb harmadik elemenek a harc tulajdonsaga
 tbodyrow3.appendChild(row3td1) //hozzáadjuk a cellát a 3. sorhoz
 
 const row3td2 = document.createElement('td') //létrehozzuk a 3. sor 2. celláját (td), createElement bementi paramétere string (ez lesz a html tag)
-row3td2.innerHTML = harmadiksorObj.fel //meghivjuk az harmadiksor objektum fel tulajdonsagat
+row3td2.innerHTML = tomb[3].fel //a tomb harmadik elemenek a fel tulajdonsaga
 tbodyrow3.appendChild(row3td2) //hozzáadjuk a cellát a 3. sorhoz
 
 const row3td3 = document.createElement('td') //létrehozzuk a 3. sor 3. celláját (td), createElement bementi paramétere string (ez lesz a html tag)
-row3td3.innerHTML = harmadiksorObj.hadero //meghivjuk az harmadiksor objektum hadero tulajdonsagat
+row3td3.innerHTML = tomb[3].hadero //a tomb harmadik elemenek a hadero tulajdonsaga
 tbodyrow3.appendChild(row3td3) //hozzáadjuk a cellát a 3. sorhoz
 
 const row4td1 = document.createElement('td') //létrehozzuk a 4. sor 1. celláját (td)- ez a középső cella lesz, mvel az első a rowSpan miatt már megvan, createElement bementi paramétere string (ez lesz a html tag)
-row4td1.innerHTML = negyediksorObj.hadero //meghivjuk az negyediksor objektum fel tulajdonsagat
+row4td1.innerHTML =  tomb[4].fel //a tomb negyedik elemenek a fel tulajdonsaga
 tbodyrow4.appendChild(row4td1) //hozzáadjuk a cellát a 4. sorhoz
 
 const row4td2 = document.createElement('td') //létrehozzuk a 4. sor 2. celláját (td)- ,utolsó cella, createElement bementi paramétere string (ez lesz a html tag)
-row4td2.innerHTML = negyediksorObj.hadero //meghivjuk az negyediksor objektum hadero tulajdonsagat
+row4td2.innerHTML = tomb[4].hadero //a tomb negyedik elemenek a hadero tulajdonsaga
 tbodyrow4.appendChild(row4td2) //hozzáadjuk a cellát a 4. sorhoz
 
 // 3. sor
@@ -164,23 +205,23 @@ tbody.appendChild(tbodyrow6)  //a 6. sort hozzáadjuk a tbody- hoz
 
 const row5td1 = document.createElement('td') //létrehozzuk az 5. sor 1. celláját (td), createElement bementi paramétere string (ez lesz a html tag)
 row5td1.rowSpan = 2 //beállítjuk a rowSpant a cellára
-row5td1.innerHTML = odtodiksorObj.harc //meghivjuk az otodiksor objektum harc tulajdonsagat
+row5td1.innerHTML =  tomb[5].harc //a tomb otodik elemenek a harc tulajdonsaga
 tbodyrow5.appendChild(row5td1) //hozzáadjuk a cellát az 5. sorhoz
 
 const row5td2 = document.createElement('td') //létrehozzuk az 5. sor 2. celláját (td), createElement bementi paramétere string (ez lesz a html tag)
-row5td2.innerHTML = odtodiksorObj.fel //meghivjuk az otodiksor objektum fel tulajdonsagat
+row5td2.innerHTML = tomb[5].fel //a tomb otodik elemenek a fel tulajdonsaga
 tbodyrow5.appendChild(row5td2) //hozzáadjuk a cellát az 5. sorhoz
 
 const row5td3 = document.createElement('td') //létrehozzuk az 5. sor 2. celláját (td), createElement bementi paramétere string (ez lesz a html tag)
-row5td3.innerHTML = odtodiksorObj.hadero //meghivjuk az otodiksor objektum hadero tulajdonsagat
+row5td3.innerHTML = tomb[5].hadero //a tomb otodik elemenek a hadero tulajdonsaga
 tbodyrow5.appendChild(row5td3) //hozzáadjuk a cellát az 5. sorhoz
 
 const row6td1 = document.createElement('td') //létrehozzuk a 6. sor 1. celláját (td)- ez a középső cella lesz, mvel az első a rowSpan miatt már megvan, createElement bementi paramétere string (ez lesz a html tag)
-row6td1.innerHTML = hatodiksorObj.fel //meghivjuk az hatodiksor objektum fel tulajdonsagat
+row6td1.innerHTML = tomb[6].fel //a tomb hatodik elemenek a fel tulajdonsaga
 tbodyrow6.appendChild(row6td1)//hozzáadjuk a cellát a 6. sorhoz
 
 const row6td2 = document.createElement('td') //létrehozzuk a 6. sor 2. celláját (td)- utolsó a sorban, createElement bementi paramétere string (ez lesz a html tag)
-row6td2.innerHTML = hatodiksorObj.hadero //meghivjuk az hatodiksor objektum hadero tulajdonsagat
+row6td2.innerHTML = tomb[6].hadero //a tomb hatodik elemenek a hadero tulajdonsaga
 tbodyrow6.appendChild(row6td2) //hozzáadjuk a cellát a 6. sorhoz
 
 //4.sor
@@ -188,13 +229,13 @@ const tbodyrow7 = document.createElement('tr') //létrehozzuk a tbody 7. sorát,
 tbody.appendChild(tbodyrow7) //a 7. sort hozzáadjuk a tbody- hoz
 
 const row7td1 = document.createElement('td') //létrehozzuk a 7. sor 1. celláját (td), createElement bementi paramétere string (ez lesz a html tag)
-row7td1.innerHTML = hetediksorObj.harc //meghivjuk az hetediksor objektum harc tulajdonsagat
+row7td1.innerHTML = tomb[7].harc //a tomb hetedik elemenek a harc tulajdonsaga
 tbodyrow7.appendChild(row7td1) //hozzáadjuk a cellát a 7. sorhoz
 
 const row7td2 = document.createElement('td') //létrehozzuk a 7. sor 2. celláját (td), createElement bementi paramétere string (ez lesz a html tag)
-row7td2.innerHTML = hetediksorObj.fel //meghivjuk az hetediksor objektum fel tulajdonsagat
+row7td2.innerHTML = tomb[7].fel //a tomb hetedik elemenek a fel tulajdonsaga
 tbodyrow7.appendChild(row7td2) //hozzáadjuk a cellát a 7. sorhoz
 
 const row7td3 = document.createElement('td') //létrehozzuk a 7. sor 3. celláját (td), createElement bementi paramétere string (ez lesz a html tag)
-row7td3.innerHTML = hetediksorObj.hadero //meghivjuk az hetediksor objektum hadero tulajdonsagat
+row7td3.innerHTML = tomb[7].hadero //a tomb hetedik elemenek a hadero tulajdonsaga
 tbodyrow7.appendChild(row7td3) //hozzáadjuk a cellát a 7. sorhoz
