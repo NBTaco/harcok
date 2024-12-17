@@ -46,15 +46,15 @@ function RenderTable(){ //létrehoom a RenderTable függvényt, ebbe van benne a
     thead.appendChild(theadrow1) //a tr elemet hozzáadjuk a thead- hez
 
     const theadcell1 = document.createElement('td') //létrehozunk egy td- elemet, createElement bementi paramétere string (ez lesz a html tag)
-    theadcell1.innerHTML = fajlecObj.harc //a tomb 0. elemének a harc tulajdonsága
+    theadcell1.innerHTML = fajlecObj.harc //a fajlecObj objektum harc tulajdonságának értéke lesz a theadcell1 innerHTML-je
     theadrow1.appendChild(theadcell1) //a td elemet hozzáadjuk a tr- hez
      
     const theadcell2 = document.createElement('td') //létrehozunk egy td- elemet, createElement bementi paramétere string (ez lesz a html tag
-    theadcell2.innerHTML = fajlecObj.felek //a tomb 0. elemének a felek tulajdonsága
+    theadcell2.innerHTML = fajlecObj.felek //a fajlecObj objektum felek tulajdonságának értéke lesz a theadcell2 innerHTML-je
     theadrow1.appendChild(theadcell2) //a td elemet hozzáadjuk a tr- hez
     
     const theadcell3 = document.createElement('td') //létrehozunk egy td- elemet, createElement bementi paramétere string (ez lesz a html tag)
-    theadcell3.innerHTML = fajlecObj.hadero //a tomb 0. elemének a hadero tulajdonsága
+    theadcell3.innerHTML = fajlecObj.hadero //a fajlecObj objektum hadero tulajdonságának értéke lesz a theadcell3 innerHTML-je
     theadrow1.appendChild(theadcell3) //a td elemet hozzáadjuk a tr- hez
 
     for (let i = 0; i < tomb.length; i++) { //for ciklus, ami végig megy a tomb- tömbön
