@@ -36,27 +36,27 @@ const tomb = [ //tomb letrehozasa, a tömb eleminek száma mindig egyel több, m
 
 const table = document.createElement('table') // Létrehozzuk a table- elemet, createElement bementi paramétere string (ez lesz a html tag)
 document.body.appendChild(table) //a table elemet hozzáadjuk a body- hoz
-
-
-const thead = document.createElement('thead') //létrehozunk egy thead- elemet createElement bementi paramétere string (ez lesz a html tag)
-table.appendChild(thead) //a thead elemet hozzáadjuk a table- hez
-
-const theadrow1 = document.createElement('tr') //létrehozunk egy tr- elemet, createElement bementi paramétere string (ez lesz a html tag)
-thead.appendChild(theadrow1) //a tr elemet hozzáadjuk a thead- hez
-
-const theadcell1 = document.createElement('td') //létrehozunk egy td- elemet, createElement bementi paramétere string (ez lesz a html tag)
-theadcell1.innerHTML = fajlecObj.harc //a tomb 0. elemének a harc tulajdonsága
-theadrow1.appendChild(theadcell1) //a td elemet hozzáadjuk a tr- hez
- 
-const theadcell2 = document.createElement('td') //létrehozunk egy td- elemet, createElement bementi paramétere string (ez lesz a html tag)
-theadcell2.innerHTML = fajlecObj.felek //a tomb 0. elemének a felek tulajdonsága
-theadrow1.appendChild(theadcell2) //a td elemet hozzáadjuk a tr- hez
-
-const theadcell3 = document.createElement('td') //létrehozunk egy td- elemet, createElement bementi paramétere string (ez lesz a html tag)
-theadcell3.innerHTML = fajlecObj.hadero //a tomb 0. elemének a hadero tulajdonsága
-theadrow1.appendChild(theadcell3) //a td elemet hozzáadjuk a tr- hez
+    
 
 function RenderTable(){ //létrehoom a RenderTable függvényt, ebbe van benne a táblázat generálása
+    const thead = document.createElement('thead') //létrehozunk egy thead- elemet createElement bementi paramétere string (ez lesz a html tag)
+    table.appendChild(thead) //a thead elemet hozzáadjuk a table- hez
+
+    const theadrow1 = document.createElement('tr') //létrehozunk egy tr- elemet, createElement bementi paramétere string (ez lesz a html tag)
+    thead.appendChild(theadrow1) //a tr elemet hozzáadjuk a thead- hez
+
+    const theadcell1 = document.createElement('td') //létrehozunk egy td- elemet, createElement bementi paramétere string (ez lesz a html tag)
+    theadcell1.innerHTML = fajlecObj.harc //a tomb 0. elemének a harc tulajdonsága
+    theadrow1.appendChild(theadcell1) //a td elemet hozzáadjuk a tr- hez
+     
+    const theadcell2 = document.createElement('td') //létrehozunk egy td- elemet, createElement bementi paramétere string (ez lesz a html tag
+    theadcell2.innerHTML = fajlecObj.felek //a tomb 0. elemének a felek tulajdonsága
+    theadrow1.appendChild(theadcell2) //a td elemet hozzáadjuk a tr- hez
+    
+    const theadcell3 = document.createElement('td') //létrehozunk egy td- elemet, createElement bementi paramétere string (ez lesz a html tag)
+    theadcell3.innerHTML = fajlecObj.hadero //a tomb 0. elemének a hadero tulajdonsága
+    theadrow1.appendChild(theadcell3) //a td elemet hozzáadjuk a tr- hez
+
     for (let i = 0; i < tomb.length; i++) { //for ciklus, ami végig megy a tomb- tömbön
         const tbody = document.createElement('tbody') // létrehozzuk a tbody taget bementi pparaméter: string
         table.appendChild(tbody) // a table-hez hözzáadjuk a tbodyt
@@ -94,3 +94,36 @@ function RenderTable(){ //létrehoom a RenderTable függvényt, ebbe van benne a
 }
 
 RenderTable() //meghívom a RenderTable függvényt, legenerálódik a táblázat
+
+const form = document.getElementById('form') //getElementById-val elkérem a html-ről a form-ot
+
+form.addEventListener('submit', function(e){ //a form submit eseményére teszönk egy eseménykezelőt
+    e.preventDefault() //meggatolom az alveto mukodest 
+    const harcVhtml = document.getElementById('harc_nev') //getElementById-val elkérem a html-ről a harc_nev-et
+    const fel1Vhtml = document.getElementById('harcolo1') //getElementById-val elkérem a html-ről a harcolo1-et
+    const hadero1Vhtml = document.getElementById('hadero1') //getElementById-val elkérem a html-ről a hadero1-et
+    const fel2Vhtml = document.getElementById('harcolo2') //getElementById-val elkérem a html-ről a harcolo2-t
+    const hadero2Vhtml = document.getElementById('hadero2') //getElementById-val elkérem a html-ről a hadero2-t
+
+    const harcV = harcVhtml.value //a harcVhtml értékét kiveszem egy harcVhtml változóba
+    const fel1V = fel1Vhtml.value //a fel1Vhtml értékét kiveszem egy fel1Vhtml változóba
+    const hadero1V = hadero1Vhtml.value //a hadero1Vhtml értékét kiveszem egy hadero1V változóba
+    const fel2V = fel2Vhtml.value //a fel2Vhtml értékét kiveszem egy fel2V változóba
+    const hadero2V = hadero2Vhtml.value //a hadero2Vhtml értékét kiveszem egy hadero2V változóba
+
+    const ujElem =  {  //egy uj objektumot hozok létre
+        harc: harcV, //az objektum harc tulajdonságáak értéke a harcV
+        fel: fel1V, //az objektum fel tulajdonságáak értéke a fel1V
+        hadero: hadero1V, //az objektum hadero tulajdonságáak értéke a hadero1V
+        fel2: fel2V, //az objektum fel2 tulajdonságáak értéke a fel2V
+        hadero2: hadero2V //az objektum hadero2 tulajdonságáak értéke a hadero2V
+    }
+
+    tomb.push(ujElem) //a harcok tömbjébe beleteszem az ujElem objektumot
+    table.innerHTML = "" //a table-t clearelem egy üres stringel
+
+    // Azért clearelem, mert különben mégegyszer hozzáadja az egész táblázatot
+    // Így először kitörli a tábláatot, majd a RenderTable-el ujragenerálja az uj elemmel egyutt
+
+    RenderTable() //meghivom a RenderTable függvényt
+})
