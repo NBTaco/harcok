@@ -111,19 +111,55 @@ form.addEventListener('submit', function(e){ //a form submit eseményére teszö
     const fel2V = fel2Vhtml.value //a fel2Vhtml értékét kiveszem egy fel2V változóba
     const hadero2V = hadero2Vhtml.value //a hadero2Vhtml értékét kiveszem egy hadero2V változóba
 
-    const ujElem =  {  //egy uj objektumot hozok létre
-        harc: harcV, //az objektum harc tulajdonságáak értéke a harcV 
-        fel: fel1V, //az objektum fel tulajdonságáak értéke a fel1V 
-        hadero: hadero1V, //az objektum hadero tulajdonságáak értéke a hadero1V 
-        fel2: fel2V, //az objektum fel2 tulajdonságáak értéke a fel2V 
-        hadero2: hadero2V //az objektum hadero2 tulajdonságáak értéke a hadero2V 
+    const aktualis = e.currentTarget //az aktualis hely
+    const errorok = aktualis.querySelectorAll('.error') //az error classosokat kigyujtjuk egy valtozoba
+
+    for(const i of errorok){ //egy i vegigmegy az errorokon és mindegyiket ""-re állítja
+        i.innerHTML = ""
+    }
+    let valid = true // a valid értékét truera állítjuk
+
+    if(harcV === ""){ //akkor megyunk be az elegazasba ha a harcV nem ures
+        const parent = harcVhtml.parentElement //kivesszuk a parentElementet egy változóba
+        const errorhelye = parent.querySelector('.error') //az errorhelye a parentelement errora lesz
+        if(errorhelye != ""){ //ha az error helye nem üres akkor megyunk be az elágazásba
+            errorhelye.innerHTML = "A mező kitöltés kötelező!" //az errorhely szövege "A mező kitöltés kötelező!"
+        }
+        valid = false // a valid értékét falsera állítjuk
     }
 
-    tomb.push(ujElem) //a harcok tömbjébe beleteszem az ujElem objektumot
-    table.innerHTML = "" //a table-t clearelem egy üres stringel
+    if(fel1V === ""){ //akkor megyunk be az elegazasba ha a fel1V nem ures
+        const parent2 = fel1Vhtml.parentElement //kivesszuk a parentElementet egy változóba
+        const errorhelye = parent2.querySelector('.error') //az errorhelye a parentelement errora lesz
+        if(errorhelye != ""){ //ha az error helye nem üres akkor megyunk be az elágazásba
+            errorhelye.innerHTML = "A mező kitöltés kötelező!" //az errorhely szövege "A mező kitöltés kötelező!"
+        }
+        valid = false // a valid értékét falsera állítjuk
+    }
 
-    // Azért clearelem, mert különben mégegyszer hozzáadja az egész táblázatot
-    // Így először kitörli a tábláatot, majd a RenderTable-el ujragenerálja az uj elemmel egyutt
+    if(hadero1V === ""){ //akkor megyunk be az elegazasba ha a hadero1V nem ures
+        const parent3 = hadero1Vhtml.parentElement //kivesszuk a parentElementet egy változóba
+        const errorhelye = parent3.querySelector('.error') //az errorhelye a parentelement errora lesz
+        if(errorhelye != ""){ //ha az error helye nem üres akkor megyunk be az elágazásba
+            errorhelye.innerHTML = "A mező kitöltés kötelező!" //az errorhely szövege "A mező kitöltés kötelező!"
+        }
+        valid = false // a valid értékét falsera állítjuk
+    }
 
-    RenderTable() //meghivom a RenderTable függvényt
+    if(valid) {//ha a valid erteke true akkor megyunk be
+        const ujElem =  {  //egy uj objektumot hozok létre
+            harc: harcV, //az objektum harc tulajdonságáak értéke a harcV 
+            fel: fel1V, //az objektum fel tulajdonságáak értéke a fel1V 
+            hadero: hadero1V, //az objektum hadero tulajdonságáak értéke a hadero1V 
+            fel2: fel2V, //az objektum fel2 tulajdonságáak értéke a fel2V 
+            hadero2: hadero2V //az objektum hadero2 tulajdonságáak értéke a hadero2V 
+        }
+        tomb.push(ujElem) //a harcok tömbjébe beleteszem az ujElem objektumot
+        table.innerHTML = "" //a table-t clearelem egy üres stringel
+
+        // Azért clearelem, mert különben mégegyszer hozzáadja az egész táblázatot
+        // Így először kitörli a tábláatot, majd a RenderTable-el ujragenerálja az uj elemmel egyutt
+
+        RenderTable() //meghivom a RenderTable függvényt
+    }
 })
