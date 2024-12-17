@@ -105,18 +105,18 @@ form.addEventListener('submit', function(e){ //a form submit eseményére teszö
     const fel2Vhtml = document.getElementById('harcolo2') //getElementById-val elkérem a html-ről a harcolo2-t
     const hadero2Vhtml = document.getElementById('hadero2') //getElementById-val elkérem a html-ről a hadero2-t
 
-    const harcV = harcVhtml.value //a harcVhtml értékét kiveszem egy harcVhtml változóba
-    const fel1V = fel1Vhtml.value //a fel1Vhtml értékét kiveszem egy fel1Vhtml változóba
+    const harcV = harcVhtml.value //a harcVhtml értékét kiveszem egy harcV változóba
+    const fel1V = fel1Vhtml.value //a fel1Vhtml értékét kiveszem egy fel1V változóba
     const hadero1V = hadero1Vhtml.value //a hadero1Vhtml értékét kiveszem egy hadero1V változóba
     const fel2V = fel2Vhtml.value //a fel2Vhtml értékét kiveszem egy fel2V változóba
     const hadero2V = hadero2Vhtml.value //a hadero2Vhtml értékét kiveszem egy hadero2V változóba
 
     const ujElem =  {  //egy uj objektumot hozok létre
-        harc: harcV, //az objektum harc tulajdonságáak értéke a harcV
-        fel: fel1V, //az objektum fel tulajdonságáak értéke a fel1V
-        hadero: hadero1V, //az objektum hadero tulajdonságáak értéke a hadero1V
-        fel2: fel2V, //az objektum fel2 tulajdonságáak értéke a fel2V
-        hadero2: hadero2V //az objektum hadero2 tulajdonságáak értéke a hadero2V
+        harc: harcV, //az objektum harc tulajdonságáak értéke a harcV 
+        fel: fel1V, //az objektum fel tulajdonságáak értéke a fel1V 
+        hadero: hadero1V, //az objektum hadero tulajdonságáak értéke a hadero1V 
+        fel2: fel2V, //az objektum fel2 tulajdonságáak értéke a fel2V 
+        hadero2: hadero2V //az objektum hadero2 tulajdonságáak értéke a hadero2V 
     }
 
     tomb.push(ujElem) //a harcok tömbjébe beleteszem az ujElem objektumot
