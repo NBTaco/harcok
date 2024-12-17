@@ -71,6 +71,7 @@ for (let i = 0; i < tomb.length; i++) { //for ciklus, ami végig megy a tomb- t�
     td1.rowSpan = 2 //beállitjuk a td1 cella rowspanjét 2 -re
     tr.appendChild(td1) //hozzáadjuk a td1 cellát az első sorhoz(tr)
 
+
     const td2 = document.createElement('td') //lértehozunk egy td taget td2 változóba bementi pparaméter: string
     td2.innerHTML = elem.fel  //beállitjuk a cella szövegét az aktuális elem objektum fel paraméterére
     tr.appendChild(td2) //hozzáadjuk a td2 cellát az első sorhoz(tr)
@@ -79,13 +80,14 @@ for (let i = 0; i < tomb.length; i++) { //for ciklus, ami végig megy a tomb- t�
     td3.innerHTML = elem.hadero  //beállitjuk a cella szövegét az aktuális elem objektum hadero paraméterére
     tr.appendChild(td3) //hozzáadjuk a td3 cellát az első sorhoz(tr)
 
-    const td4 = document.createElement('td') //lértehozunk egy td taget td4 változóba bementi pparaméter: string
-    td4.innerHTML = elem.fel2  //beállitjuk a cella szövegét az aktuális elem objektum fel2 paraméterére
-    tr2.appendChild(td4) //hozzáadjuk a td4 cellát az első sorhoz(tr2)
 
-    const td5 = document.createElement('td') //lértehozunk egy td taget td5 változóba bementi pparaméter: string
-    td5.innerHTML = elem.hadero2  //beállitjuk a cella szövegét az aktuális elem objektum hadero2 paraméterére
-    tr2.appendChild(td5) //hozzáadjuk a td5 cellát az első sorhoz(tr2)
+    if(elem.fel2 || elem.hadero2){ // Ebbe az elágazásba ellenőrizzük, hogy az objektumnak van-e fel2, és hadero2 tulajdonsága, a van létrehozzuk nekik a cellákat és beállítjuk a szövegeiket, ha nincs akkor nem történik semmi
+        const td4 = document.createElement('td') //lértehozunk egy td taget td4 változóba bementi pparaméter: string
+        td4.innerHTML = elem.fel2  //beállitjuk a cella szövegét az aktuális elem objektum fel2 paraméterére
+        tr2.appendChild(td4) //hozzáadjuk a td4 cellát az első sorhoz(tr2)
 
-
+        const td5 = document.createElement('td') //lértehozunk egy td taget td5 változóba bementi pparaméter: string
+        td5.innerHTML = elem.hadero2  //beállitjuk a cella szövegét az aktuális elem objektum hadero2 paraméterére
+        tr2.appendChild(td5) //hozzáadjuk a td5 cellát az első sorhoz(tr2)
+    }
 }
