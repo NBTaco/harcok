@@ -128,9 +128,10 @@ form.addEventListener('submit', function(e){ //a form submit eseményére teszö
         valid = false // a valid értékét falsera állítjuk
     }
 
+
     if(fel1V === ""){ //akkor megyunk be az elegazasba ha a fel1V nem ures
-        const parent2 = fel1Vhtml.parentElement //kivesszuk a parentElementet egy változóba
-        const errorhelye = parent2.querySelector('.error') //az errorhelye a parentelement errora lesz
+        const parent = fel1Vhtml.parentElement //kivesszuk a parentElementet egy változóba
+        const errorhelye = parent.querySelector('.error') //az errorhelye a parentelement errora lesz
         if(errorhelye != ""){ //ha az error helye nem üres akkor megyunk be az elágazásba
             errorhelye.innerHTML = "A mező kitöltés kötelező!" //az errorhely szövege "A mező kitöltés kötelező!"
         }
@@ -138,15 +139,15 @@ form.addEventListener('submit', function(e){ //a form submit eseményére teszö
     }
 
     if(hadero1V === ""){ //akkor megyunk be az elegazasba ha a hadero1V nem ures
-        const parent3 = hadero1Vhtml.parentElement //kivesszuk a parentElementet egy változóba
-        const errorhelye = parent3.querySelector('.error') //az errorhelye a parentelement errora lesz
+        const parent = hadero1Vhtml.parentElement //kivesszuk a parentElementet egy változóba
+        const errorhelye = parent.querySelector('.error') //az errorhelye a parentelement errora lesz
         if(errorhelye != ""){ //ha az error helye nem üres akkor megyunk be az elágazásba
             errorhelye.innerHTML = "A mező kitöltés kötelező!" //az errorhely szövege "A mező kitöltés kötelező!"
         }
         valid = false // a valid értékét falsera állítjuk
     }
 
-    if(valid) {//ha a valid erteke true akkor megyunk be
+    if(valid === true) {//ha a valid erteke true akkor megyunk be
         const ujElem =  {  //egy uj objektumot hozok létre
             harc: harcV, //az objektum harc tulajdonságáak értéke a harcV 
             fel: fel1V, //az objektum fel tulajdonságáak értéke a fel1V 
