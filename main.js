@@ -128,8 +128,7 @@ form.addEventListener('submit', function(e){ //a form submit eseményére teszö
 
     const aktualis = e.currentTarget //az aktualis hely
     const errorok = aktualis.querySelectorAll('.error') //az error classosokat kigyujtjuk egy valtozoba
-    const errorszoveg = "A mező kitöltés kötelező!"  //az error szivegnek csinálok egy változót, hogy ne kelljen majd begépelgetni
-
+    let errorszoveg = "A mező kitöltés kötelező!"  //az error szivegnek csinálok egy változót, hogy ne kelljen majd begépelgetni
     let valid = true // a valid értékét truera állítjuk
 
     for(const i of errorok){ //egy i vegigmegy az errorokon és mindegyiket ""-re állítja
@@ -148,15 +147,34 @@ form.addEventListener('submit', function(e){ //a form submit eseményére teszö
         valid = false //a valid erteket falsera állitjuk
     }
 
+    if (fel2V != "" && !validalas(hadero2Vhtml, errorszoveg)) { //ha a fel2V nem ures, es a hadero2Vhtml validalasa falseal ter vissza akkor megyunk be az elagazasba
+        valid = false //a valid erteket falsera állitjuk
+    }
+
+    if (hadero2V != "" && !validalas(fel2Vhtml, errorszoveg)) { //ha a hadero2V nem ures, es a fel2Vhtml validalasa falseal ter vissza akkor megyunk be az elagazasba
+        valid = false //a valid erteket falsera állitjuk
+    }
+
+    
     if(valid){ //Akkor megyünk be az elágazásba, ha a valid true
-        const ujElem = { //egy uj objektumot hozok létre 5 tulajdonsággal
-            harc: harcV, //az objektum harc tulajdonságáak értéke a harcV 
-            fel: fel1V, //az objektum fel tulajdonságáak értéke a fel1V 
-            hadero: hadero1V, //az objektum hadero tulajdonságáak értéke a hadero1V 
-            fel2: fel2V, //az objektum fel2 tulajdonságáak értéke a fel2V 
-            hadero2: hadero2V //az objektum hadero2 tulajdonságáak értéke a hadero2V
+        if(fel2V && hadero2V){ //ha van fel2V és hadero2V akkor megyunk be az elagazasba
+            const ujElem = { //egy uj objektumot hozok létre 5 tulajdonsággal
+                harc: harcV, //az objektum harc tulajdonságáak értéke a harcV 
+                fel: fel1V, //az objektum fel tulajdonságáak értéke a fel1V 
+                hadero: hadero1V, //az objektum hadero tulajdonságáak értéke a hadero1V 
+                fel2: fel2V, //az objektum fel2 tulajdonságáak értéke a fel2V 
+                hadero2: hadero2V //az objektum hadero2 tulajdonságáak értéke a hadero2V
+            }
+            tomb.push(ujElem) //a harcok tömbjébe beleteszem az ujElem objektumot
         }
-        tomb.push(ujElem) //a harcok tömbjébe beleteszem az ujElem objektumot
+        else{
+            const ujElem = { //egy uj objektumot hozok létre 5 tulajdonsággal
+                harc: harcV, //az objektum harc tulajdonságáak értéke a harcV 
+                fel: fel1V, //az objektum fel tulajdonságáak értéke a fel1V 
+                hadero: hadero1V, //az objektum hadero tulajdonságáak értéke a hadero1V 
+            }
+            tomb.push(ujElem) //a harcok tömbjébe beleteszem az ujElem objektumot
+        }
     }
     table.innerHTML = "" //a table-t clearelem egy üres stringel
     RenderTable() //meghivom a RenderTable függvényt
