@@ -93,6 +93,7 @@ function RenderTable(){ //létrehoom a RenderTable függvényt, ebbe van benne a
     }
 }
 
+
 RenderTable() //meghívom a RenderTable függvényt, legenerálódik a táblázat
 
 const form = document.getElementById('form') //getElementById-val elkérem a html-ről a form-ot
@@ -146,25 +147,7 @@ form.addEventListener('submit', function(e){ //a form submit eseményére teszö
         valid = false // a valid értékét falsera állítjuk
     }
 
-    if(fel2V === ""){ //akkor megyunk be az elegazasba ha a fel2V ures
-        const parent = fel2Vhtml.parentElement //kivesszuk a parentElementet egy változóba
-        const errorhelye = parent.querySelector('.error') //az errorhelye a parentelement errora lesz
-        if(errorhelye != ""){ //ha az error helye nem üres akkor megyunk be az elágazásba
-            errorhelye.innerHTML = "A mező kitöltés kötelező!" //az errorhely szövege "A mező kitöltés kötelező!"
-        }
-        valid = false // a valid értékét falsera állítjuk
-    }
-
-    if(hadero2V === ""){ //akkor megyunk be az elegazasba ha a hadero2V ures
-        const parent = hadero2Vhtml.parentElement //kivesszuk a parentElementet egy változóba
-        const errorhelye = parent.querySelector('.error') //az errorhelye a parentelement errora lesz
-        if(errorhelye != ""){ //ha az error helye nem üres akkor megyunk be az elágazásba
-            errorhelye.innerHTML = "A mező kitöltés kötelező!" //az errorhely szövege "A mező kitöltés kötelező!"
-        }
-        valid = false // a valid értékét falsera állítjuk
-    }
-
-    if(valid){
+    if(valid){ //Akkor megyünk be az elágazásba, ha a valid true
         const ujElem = { //egy uj objektumot hozok létre 5 tulajdonsággal
             harc: harcV, //az objektum harc tulajdonságáak értéke a harcV 
             fel: fel1V, //az objektum fel tulajdonságáak értéke a fel1V 
