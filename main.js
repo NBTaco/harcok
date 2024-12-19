@@ -110,6 +110,17 @@ function validalas(validelem, error){ //létrehozom a validalas() függvényt 2 
     return valid //a fuggveny a valid ertekevel ter vissza (true/false)
 }
 
+function ketmezovalidalas(elsoelem, masodikelem, error) { //létrehozom a ketmezovalidalas() függvényt 3 bemenő paraméterrel(elsoelem, masodikelem, error)
+    let valid = true // létrehozok egy valid elemet aminek az alap értéke true
+    if (elsoelem.value != "" && !validalas(masodikelem, error)) { //akkkor megyunk be az elágazásba, ha a elsoelem nem ures, es a masodikelem validalasa false
+        valid = false //a valid erteket falsera állitjuk
+    }
+    if (masodikelem.value != "" && !validalas(elsoelem, error)) { //akkkor megyunk be az elágazásba, ha a elsoelem nem ures, es a masodikelem validalasa false
+        valid = false //a valid erteket falsera állitjuk
+    }
+    return valid //a fuggveny a valid ertekevel ter vissza (true/false)
+}
+
 const form = document.getElementById('form') //getElementById-val elkérem a html-ről a form-ot
 
 form.addEventListener('submit', function(e){ //a form submit eseményére teszönk egy eseménykezelőt
@@ -147,14 +158,9 @@ form.addEventListener('submit', function(e){ //a form submit eseményére teszö
         valid = false //a valid erteket falsera állitjuk
     }
 
-    if (fel2V != "" && !validalas(hadero2Vhtml, errorszoveg)) { //ha a fel2V nem ures, es a hadero2Vhtml validalasa falseal ter vissza akkor megyunk be az elagazasba
+    if (!ketmezovalidalas(fel2Vhtml, hadero2Vhtml, errorszoveg)) { //akkor megyunk be az elagazsba, ha a ketmezovalidalas false-t ad vissza (fel2Vhtml, hadero2Vhtml) a két mezo amit nézünk
         valid = false //a valid erteket falsera állitjuk
     }
-
-    if (hadero2V != "" && !validalas(fel2Vhtml, errorszoveg)) { //ha a hadero2V nem ures, es a fel2Vhtml validalasa falseal ter vissza akkor megyunk be az elagazasba
-        valid = false //a valid erteket falsera állitjuk
-    }
-
     
     if(valid){ //Akkor megyünk be az elágazásba, ha a valid true
         if(fel2V && hadero2V){ //ha van fel2V és hadero2V akkor megyunk be az elagazasba
