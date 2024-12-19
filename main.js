@@ -96,6 +96,20 @@ function RenderTable(){ //létrehoom a RenderTable függvényt, ebbe van benne a
 
 RenderTable() //meghívom a RenderTable függvényt, legenerálódik a táblázat
 
+
+function validalas(validelem, error){ //létrehozom a validalas() függvényt 2 bemenő paraméterrel(validelem, error)
+    let valid = true // létrehozok egy valid elemet aminek az alap értéke true
+    if(validelem.value === ""){ //a ha validelem bemeneti pararaméter szövege ures akkor megyunk be az elagazasba
+        const parent = validelem.parentElement //a validelem parentelement-jét kiveszem egy változóba
+        const errorhelye = parent.querySelector(".error") //az error hely span-t (class="error")-t kiveszem egy változóba, az előbbi parenthez tartozót
+        if(errorhelye != ""){ //akkor megyunk be az elágazásba, ha az errorhelye nem ures string
+            errorhelye.innerHTML = error //az errorhelye-nek a szoveget beállitjuk a 2. paraméterre(error)
+        }
+        valid = false //a valid erteket falsera állitjuk
+    }
+    return valid //a fuggveny a valid ertekevel ter vissza (true/false)
+}
+
 const form = document.getElementById('form') //getElementById-val elkérem a html-ről a form-ot
 
 form.addEventListener('submit', function(e){ //a form submit eseményére teszönk egy eseménykezelőt
@@ -114,37 +128,24 @@ form.addEventListener('submit', function(e){ //a form submit eseményére teszö
 
     const aktualis = e.currentTarget //az aktualis hely
     const errorok = aktualis.querySelectorAll('.error') //az error classosokat kigyujtjuk egy valtozoba
+    const errorszoveg = "A mező kitöltés kötelező!"  //az error szivegnek csinálok egy változót, hogy ne kelljen majd begépelgetni
 
-    for(const i of errorok){ //egy i vegigmegy az errorokon és mindegyiket ""-re állítja
-        i.innerHTML = ""
-    }
     let valid = true // a valid értékét truera állítjuk
 
-    if(harcV === ""){ //akkor megyunk be az elegazasba ha a harcV ures
-        const parent = harcVhtml.parentElement //kivesszuk a parentElementet egy változóba
-        const errorhelye = parent.querySelector('.error') //az errorhelye a parentelement errora lesz
-        if(errorhelye != ""){ //ha az error helye nem üres akkor megyunk be az elágazásba
-            errorhelye.innerHTML = "A mező kitöltés kötelező!" //az errorhely szövege "A mező kitöltés kötelező!"
-        }
-        valid = false // a valid értékét falsera állítjuk
+    for(const i of errorok){ //egy i vegigmegy az errorokon és mindegyiket ""-re állítja
+        i.innerHTML = "" //az errorok mindegyik elemének innerHTML.je ures string
     }
 
-    if(fel1V === ""){ //akkor megyunk be az elegazasba ha a fel1V ures
-        const parent = fel1Vhtml.parentElement //kivesszuk a parentElementet egy változóba
-        const errorhelye = parent.querySelector('.error') //az errorhelye a parentelement errora lesz
-        if(errorhelye != ""){ //ha az error helye nem üres akkor megyunk be az elágazásba
-            errorhelye.innerHTML = "A mező kitöltés kötelező!" //az errorhely szövege "A mező kitöltés kötelező!"
-        }
-        valid = false // a valid értékét falsera állítjuk
+    if(!validalas(harcVhtml, errorszoveg)){ //akkor megyunk be az elagazsba, ha a validalas false-t ad vissza (harcVhtml-en nézzük)
+        valid = false //a valid erteket falsera állitjuk
     }
 
-    if(hadero1V === ""){ //akkor megyunk be az elegazasba ha a hadero1V ures
-        const parent = hadero1Vhtml.parentElement //kivesszuk a parentElementet egy változóba
-        const errorhelye = parent.querySelector('.error') //az errorhelye a parentelement errora lesz
-        if(errorhelye != ""){ //ha az error helye nem üres akkor megyunk be az elágazásba
-            errorhelye.innerHTML = "A mező kitöltés kötelező!" //az errorhely szövege "A mező kitöltés kötelező!"
-        }
-        valid = false // a valid értékét falsera állítjuk
+    if(!validalas(fel1Vhtml, errorszoveg)){ //akkor megyunk be az elagazsba, ha a validalas false-t ad vissza (fel1Vhtml-en nézzük)
+        valid = false //a valid erteket falsera állitjuk
+    }
+
+    if(!validalas(hadero1Vhtml, errorszoveg)){ //akkor megyunk be az elagazsba, ha a validalas false-t ad vissza (hadero1Vhtml-en nézzük)
+        valid = false //a valid erteket falsera állitjuk
     }
 
     if(valid){ //Akkor megyünk be az elágazásba, ha a valid true
