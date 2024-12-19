@@ -146,56 +146,34 @@ form.addEventListener('submit', function(e){ //a form submit eseményére teszö
         valid = false // a valid értékét falsera állítjuk
     }
 
-    let fel2Valid = true //létrehozzuk a fel2Valid változót, alap értéke true
-
-    if(fel2V === ""){ //ha a fel2V üres akkor megyünk be
+    if(fel2V === ""){ //akkor megyunk be az elegazasba ha a fel2V ures
         const parent = fel2Vhtml.parentElement //kivesszuk a parentElementet egy változóba
         const errorhelye = parent.querySelector('.error') //az errorhelye a parentelement errora lesz
-
-        //Az elűgazásba akkor megyünk be, ha a hadero2V ben nincs semmi, azaz egy üres string, a valid értéke true, azaz már minden kötelező mezőt kitöltöttünk
-        //és akkor, ha az itten error még egy üres string, ez azért van, mert az utolso 2 elem csak akkor kötelező, ha már az egyiket meg akartuk adni
-        if(hadero2V != "" && valid && errorhelye != ""){ 
-            errorhelye.innerHTML = "A mező kitöltése kötelező!" //az errorhely szövege "A mező kitöltés kötelező!"
+        if(errorhelye != ""){ //ha az error helye nem üres akkor megyunk be az elágazásba
+            errorhelye.innerHTML = "A mező kitöltés kötelező!" //az errorhely szövege "A mező kitöltés kötelező!"
         }
-        fel2Valid = false //a fel2Valid-ot false ra állítjuk
+        valid = false // a valid értékét falsera állítjuk
     }
 
-    let hadero2Valid = true //létrehozzuk a hadero2Valid változót, alap értéke true
-
-    if(hadero2V === ""){ //ha a hadero2V üres akkor megyünk be
+    if(hadero2V === ""){ //akkor megyunk be az elegazasba ha a hadero2V ures
         const parent = hadero2Vhtml.parentElement //kivesszuk a parentElementet egy változóba
         const errorhelye = parent.querySelector('.error') //az errorhelye a parentelement errora lesz
-
-        //Az elűgazásba akkor megyünk be, ha a fel2V ben nincs semmi, azaz egy üres string, a valid értéke true, azaz már minden kötelező mezőt kitöltöttünk
-        //és akkor, ha az itten error még egy üres string, ez azért van, mert az utolso 2 elem csak akkor kötelező, ha már az egyiket meg akartuk adni
-        if(fel2V != "" && valid && errorhelye != "" ){ //ha az error helye nem üres akkor megyunk be az elágazásba
-            errorhelye.innerHTML = "A mező kitöltése kötelező!" //az errorhely szövege "A mező kitöltés kötelező!"
+        if(errorhelye != ""){ //ha az error helye nem üres akkor megyunk be az elágazásba
+            errorhelye.innerHTML = "A mező kitöltés kötelező!" //az errorhely szövege "A mező kitöltés kötelező!"
         }
-        hadero2Valid = false //a hadero2Valid-to false ra állítjuk
+        valid = false // a valid értékét falsera állítjuk
     }
 
-    if(valid) { //akkor megyunk be az elágazásba, ha a valid true
-
-        //azért igy van, mert ha a hadero2V  vagy a fel2V ures akkor azokat nem kell hozzáadni a táblázathoz, ezért az objektumba csak 3 tulajdojnság lesz
-        if(!fel2Valid || !hadero2Valid) { //ha a fel2Valid false vagy a hadero2Valid false akkor megyunk be
-            const ujElem = { //egy uj objektumot hozok létre 3 tulajdonsággal
-                harc: harcV, //az objektum harc tulajdonságáak értéke a harcV 
-                fel: fel1V, //az objektum fel tulajdonságáak értéke a fel1V 
-                hadero: hadero1V, //az objektum hadero tulajdonságáak értéke a hadero1V 
-            }
-            tomb.push(ujElem) //a harcok tömbjébe beleteszem az ujElem objektumot
-        } 
-        else {
-            const ujElem = { //egy uj objektumot hozok létre 5 tulajdonsággal
-                harc: harcV, //az objektum harc tulajdonságáak értéke a harcV 
-                fel: fel1V, //az objektum fel tulajdonságáak értéke a fel1V 
-                hadero: hadero1V, //az objektum hadero tulajdonságáak értéke a hadero1V 
-                fel2: fel2V, //az objektum fel2 tulajdonságáak értéke a fel2V 
-                hadero2: hadero2V //az objektum hadero2 tulajdonságáak értéke a hadero2V
-            }
-            tomb.push(ujElem) //a harcok tömbjébe beleteszem az ujElem objektumot
+    if(valid){
+        const ujElem = { //egy uj objektumot hozok létre 5 tulajdonsággal
+            harc: harcV, //az objektum harc tulajdonságáak értéke a harcV 
+            fel: fel1V, //az objektum fel tulajdonságáak értéke a fel1V 
+            hadero: hadero1V, //az objektum hadero tulajdonságáak értéke a hadero1V 
+            fel2: fel2V, //az objektum fel2 tulajdonságáak értéke a fel2V 
+            hadero2: hadero2V //az objektum hadero2 tulajdonságáak értéke a hadero2V
         }
-        table.innerHTML = "" //a table-t clearelem egy üres stringel
-        RenderTable() //meghivom a RenderTable függvényt
+        tomb.push(ujElem) //a harcok tömbjébe beleteszem az ujElem objektumot
     }
+    table.innerHTML = "" //a table-t clearelem egy üres stringel
+    RenderTable() //meghivom a RenderTable függvényt
 })
