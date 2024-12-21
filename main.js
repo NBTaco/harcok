@@ -52,14 +52,14 @@ const table = document.createElement('table') // Létrehozzuk a table- elemet, c
 document.body.appendChild(table) //a table elemet hozzáadjuk a body- hoz
 
 
-function RenderTable(){ //létrehoom a RenderTable függvényt, ebbe van benne a táblázat generálása
+function RenderTable(hasznalttomb){ //létrehoom a RenderTable függvényt, ebbe van benne a táblázat generálása egy hasznalttomb bemeneti parameterrel
 
     fejlecGen()
 
-    for (let i = 0; i < tomb.length; i++) { //for ciklus, ami végig megy a tomb- tömbön
+    for (let i = 0; i < hasznalttomb.length; i++) { //for ciklus, ami végig megy a hasznalttomb parameteren, ami egy tomb joesetben
         const tbody = document.createElement('tbody') // létrehozzuk a tbody taget bementi pparaméter: string
         table.appendChild(tbody) // a table-hez hözzáadjuk a tbodyt
-        const elem = tomb[i] // kivesszük egy változóba a tömb aktuális objektumát, később ezzel dolgozunk
+        const elem = hasznalttomb[i] // kivesszük egy változóba a hasznalttomb paraméetr i-dik elemet, innentol ugyanugy mukodik
         const tr = document.createElement('tr') //létrehozunk egy sort amihez a harc cellákat fogjuk hozzáadni, és az első felet és haderejét bementi pparaméter: string
         const tr2 = document.createElement('tr') //létrehozzuk a második sor, amihez a harcot már nem kell hozzáadni, csak a másidik felet és a haderejét, a rowspan miatt ez a harc cella mellett lesz bementi pparaméter: string
         tbody.appendChild(tr) //hozzáadjuk a tbodyhoz az első sort
@@ -92,9 +92,7 @@ function RenderTable(){ //létrehoom a RenderTable függvényt, ebbe van benne a
     }
 }
 
-
-RenderTable() //meghívom a RenderTable függvényt, legenerálódik a táblázat
-
+RenderTable(tomb) //meghívom a RenderTable függvényt, legenerálódik a táblázat
 
 function validalas(validelem, error){ //létrehozom a validalas() függvényt 2 bemenő paraméterrel(validelem, error)
     let valid = true // létrehozok egy valid elemet aminek az alap értéke true
@@ -182,5 +180,5 @@ form.addEventListener('submit', function(e){ //a form submit eseményére teszö
         }
     }
     table.innerHTML = "" //a table-t clearelem egy üres stringel
-    RenderTable() //meghivom a RenderTable függvényt
+    RenderTable(tomb) //meghivom a RenderTable függvényt
 })
