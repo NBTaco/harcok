@@ -34,28 +34,27 @@ const tomb = [ //tomb letrehozasa, a tömb eleminek száma mindig egyel több, m
     }
 ]
 
+
+function fejlecGen(){
+    const thead = document.createElement('thead') //letrehozzuk a thead elemet
+    table.appendChild(thead) //a table hez hozzáadjuk a thead-et
+    const tr = document.createElement('tr') //letrehozzuk a tr elemet
+    thead.appendChild(tr) //a thead hez hozzáadjuk a sort
+    for (let i in fajlecObj) { // Vigimegyunk az objektum tulajdonsagain 
+        const td = document.createElement('td') //letrehozunk egy td elemet
+        td.innerHTML = fajlecObj[i] // A tulajdonság értéke lesz az innerHTML
+        tr.appendChild(td) //a sohoz hozzárakjuk a td-t
+    }
+}
+
+
 const table = document.createElement('table') // Létrehozzuk a table- elemet, createElement bementi paramétere string (ez lesz a html tag)
 document.body.appendChild(table) //a table elemet hozzáadjuk a body- hoz
-    
+
 
 function RenderTable(){ //létrehoom a RenderTable függvényt, ebbe van benne a táblázat generálása
-    const thead = document.createElement('thead') //létrehozunk egy thead- elemet createElement bementi paramétere string (ez lesz a html tag)
-    table.appendChild(thead) //a thead elemet hozzáadjuk a table- hez
 
-    const theadrow1 = document.createElement('tr') //létrehozunk egy tr- elemet, createElement bementi paramétere string (ez lesz a html tag)
-    thead.appendChild(theadrow1) //a tr elemet hozzáadjuk a thead- hez
-
-    const theadcell1 = document.createElement('td') //létrehozunk egy td- elemet, createElement bementi paramétere string (ez lesz a html tag)
-    theadcell1.innerHTML = fajlecObj.harc //a fajlecObj objektum harc tulajdonságának értéke lesz a theadcell1 innerHTML-je
-    theadrow1.appendChild(theadcell1) //a td elemet hozzáadjuk a tr- hez
-     
-    const theadcell2 = document.createElement('td') //létrehozunk egy td- elemet, createElement bementi paramétere string (ez lesz a html tag
-    theadcell2.innerHTML = fajlecObj.felek //a fajlecObj objektum felek tulajdonságának értéke lesz a theadcell2 innerHTML-je
-    theadrow1.appendChild(theadcell2) //a td elemet hozzáadjuk a tr- hez
-    
-    const theadcell3 = document.createElement('td') //létrehozunk egy td- elemet, createElement bementi paramétere string (ez lesz a html tag)
-    theadcell3.innerHTML = fajlecObj.hadero //a fajlecObj objektum hadero tulajdonságának értéke lesz a theadcell3 innerHTML-je
-    theadrow1.appendChild(theadcell3) //a td elemet hozzáadjuk a tr- hez
+    fejlecGen()
 
     for (let i = 0; i < tomb.length; i++) { //for ciklus, ami végig megy a tomb- tömbön
         const tbody = document.createElement('tbody') // létrehozzuk a tbody taget bementi pparaméter: string
