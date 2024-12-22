@@ -66,31 +66,31 @@ function RenderTable(hasznalttomb){ //létrehoom a RenderTable függvényt, ebbe
         tbody.appendChild(tr2) //hozzáadjuk a tbodyhoz a második sort
         let index = 0 //behozok egy index változót, ami majd mindig növekedik egyel
 
-        for (const i in elem) { //végigmegyünk az aktualis objektumon (elem)
+        for (const j in elem) { //végigmegyünk az aktualis objektumon (elem)
             if (index === 0) { // ha az index = 0 akkor megyunk be az elegazasba
                 let td = document.createElement('td') // létrehozunk egy td elemet
-                td.innerHTML = elem[i] // a td innerHtml-je az aktualis objektum i-dik tulajdonsaga lesz
+                td.innerHTML = elem[j] // a td innerHtml-je az aktualis objektum i-dik tulajdonsaga lesz
                 td.rowSpan = 2 //beallitjuk a rowspant 2-re
                 tr.appendChild(td) // a sorhoz(tr) hozzasdjuk a td-t(cella)
             } 
             else if (index === 1) { // ha az index = 1 akkor megyunk be az elegazasba
                 let td = document.createElement('td') // létrehozunk egy td elemet
-                td.innerHTML = elem[i] // a td innerHtml-je az aktualis objektum i-dik tulajdonsaga lesz
+                td.innerHTML = elem[j] // a td innerHtml-je az aktualis objektum i-dik tulajdonsaga lesz
                 tr.appendChild(td) // a sorhoz(tr) hozzasdjuk a td-t(cella)
             } 
             else if (index === 2) { // ha az index = 2 akkor megyunk be az elegazasba
                 let td = document.createElement('td') // létrehozunk egy td elemet
-                td.innerHTML = elem[i] // a td innerHtml-je az aktualis objektum i-dik tulajdonsaga lesz
+                td.innerHTML = elem[j] // a td innerHtml-je az aktualis objektum i-dik tulajdonsaga lesz
                 tr.appendChild(td) // a sorhoz(tr) hozzasdjuk a td-t(cella)
             } 
             else if (index === 3) { // ha az index = 3 akkor megyunk be az elegazasba
                 let td = document.createElement('td') // létrehozunk egy td elemet
-                td.innerHTML = elem[i] // a td innerHtml-je az aktualis objektum i-dik tulajdonsaga lesz 
+                td.innerHTML = elem[j] // a td innerHtml-je az aktualis objektum i-dik tulajdonsaga lesz 
                 tr2.appendChild(td) // a sorhoz(tr) hozzasdjuk a td-t(cella)
             } 
             else if (index === 4) { // ha az index = 4 akkor megyunk be az elegazasba
                 let td = document.createElement('td') // létrehozunk egy td elemet
-                td.innerHTML = elem[i] // a td innerHtml-je az aktualis objektum i-dik tulajdonsaga lesz
+                td.innerHTML = elem[j] // a td innerHtml-je az aktualis objektum i-dik tulajdonsaga lesz
                 tr2.appendChild(td) // a sorhoz(tr) hozzasdjuk a td-t(cella)
             }
             index += 1
