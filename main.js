@@ -35,14 +35,14 @@ const tomb = [ //tomb letrehozasa, a tömb eleminek száma mindig egyel több, m
 ]
 
 
-function fejlecGen(){
+function fejlecGen(hasznaltobjektum){ //létrehozom a ffejlecGen függvény 1 paraméterrel, ami az objektum ami alapján generáljujk
     const thead = document.createElement('thead') //letrehozzuk a thead elemet
     table.appendChild(thead) //a table hez hozzáadjuk a thead-et
     const tr = document.createElement('tr') //letrehozzuk a tr elemet
     thead.appendChild(tr) //a thead hez hozzáadjuk a sort
-    for (let i in fajlecObj) { // Vigimegyunk az objektum tulajdonsagain 
+    for (const i in hasznaltobjektum) { // Vigimegyunk az objektum tulajdonsagain 
         const td = document.createElement('td') //letrehozunk egy td elemet
-        td.innerHTML = fajlecObj[i] // A tulajdonság értéke lesz az innerHTML
+        td.innerHTML = hasznaltobjektum[i] // A tulajdonság értéke lesz az innerHTML
         tr.appendChild(td) //a sohoz hozzárakjuk a td-t
     }
 }
@@ -54,7 +54,7 @@ document.body.appendChild(table) //a table elemet hozzáadjuk a body- hoz
 
 function RenderTable(hasznalttomb){ //létrehoom a RenderTable függvényt, ebbe van benne a táblázat generálása egy hasznalttomb bemeneti parameterrel
 
-    fejlecGen()
+    fejlecGen(fajlecObj) //meghivom a fejlecGen functiont, paramétere a fajlecObj
 
     for (let i = 0; i < hasznalttomb.length; i++) { //for ciklus, ami végig megy a hasznalttomb parameteren, ami egy tomb joesetben
         const tbody = document.createElement('tbody') // létrehozzuk a tbody taget bementi pparaméter: string
@@ -64,30 +64,36 @@ function RenderTable(hasznalttomb){ //létrehoom a RenderTable függvényt, ebbe
         const tr2 = document.createElement('tr') //létrehozzuk a második sor, amihez a harcot már nem kell hozzáadni, csak a másidik felet és a haderejét, a rowspan miatt ez a harc cella mellett lesz bementi pparaméter: string
         tbody.appendChild(tr) //hozzáadjuk a tbodyhoz az első sort
         tbody.appendChild(tr2) //hozzáadjuk a tbodyhoz a második sort
-    
-        const td1 = document.createElement('td') //lértehozunk egy td taget td1 változóba bementi pparaméter: string
-        td1.innerHTML = elem.harc //beállitjuk a cella szövegét az aktuális elem objektum harc paraméterére
-        td1.rowSpan = 2 //beállitjuk a td1 cella rowspanjét 2 -re
-        tr.appendChild(td1) //hozzáadjuk a td1 cellát az első sorhoz(tr)
-    
-    
-        const td2 = document.createElement('td') //lértehozunk egy td taget td2 változóba bementi pparaméter: string
-        td2.innerHTML = elem.fel  //beállitjuk a cella szövegét az aktuális elem objektum fel paraméterére
-        tr.appendChild(td2) //hozzáadjuk a td2 cellát az első sorhoz(tr)
-    
-        const td3 = document.createElement('td') //lértehozunk egy td taget td3 változóba bementi pparaméter: string
-        td3.innerHTML = elem.hadero  //beállitjuk a cella szövegét az aktuális elem objektum hadero paraméterére
-        tr.appendChild(td3) //hozzáadjuk a td3 cellát az első sorhoz(tr)
-    
-    
-        if(elem.fel2 || elem.hadero2){ // Ebbe az elágazásba ellenőrizzük, hogy az objektumnak van-e fel2, és hadero2 tulajdonsága, a van létrehozzuk nekik a cellákat és beállítjuk a szövegeiket, ha nincs akkor nem történik semmi
-            const td4 = document.createElement('td') //lértehozunk egy td taget td4 változóba bementi pparaméter: string
-            td4.innerHTML = elem.fel2  //beállitjuk a cella szövegét az aktuális elem objektum fel2 paraméterére
-            tr2.appendChild(td4) //hozzáadjuk a td4 cellát az első sorhoz(tr2)
-    
-            const td5 = document.createElement('td') //lértehozunk egy td taget td5 változóba bementi pparaméter: string
-            td5.innerHTML = elem.hadero2  //beállitjuk a cella szövegét az aktuális elem objektum hadero2 paraméterére
-            tr2.appendChild(td5) //hozzáadjuk a td5 cellát az első sorhoz(tr2)
+        let index = 0 //behozok egy index változót, ami majd mindig növekedik egyel
+
+        for (const i in elem) { //végigmegyünk az aktualis objektumon (elem)
+            if (index === 0) { // ha az index = 0 akkor megyunk be az elegazasba
+                let td = document.createElement('td') // létrehozunk egy td elemet
+                td.innerHTML = elem[i] // a td innerHtml-je az aktualis objektum i-dik tulajdonsaga lesz
+                td.rowSpan = 2 //beallitjuk a rowspant 2-re
+                tr.appendChild(td) // a sorhoz(tr) hozzasdjuk a td-t(cella)
+            } 
+            else if (index === 1) { // ha az index = 1 akkor megyunk be az elegazasba
+                let td = document.createElement('td') // létrehozunk egy td elemet
+                td.innerHTML = elem[i] // a td innerHtml-je az aktualis objektum i-dik tulajdonsaga lesz
+                tr.appendChild(td) // a sorhoz(tr) hozzasdjuk a td-t(cella)
+            } 
+            else if (index === 2) { // ha az index = 2 akkor megyunk be az elegazasba
+                let td = document.createElement('td') // létrehozunk egy td elemet
+                td.innerHTML = elem[i] // a td innerHtml-je az aktualis objektum i-dik tulajdonsaga lesz
+                tr.appendChild(td) // a sorhoz(tr) hozzasdjuk a td-t(cella)
+            } 
+            else if (index === 3) { // ha az index = 3 akkor megyunk be az elegazasba
+                let td = document.createElement('td') // létrehozunk egy td elemet
+                td.innerHTML = elem[i] // a td innerHtml-je az aktualis objektum i-dik tulajdonsaga lesz 
+                tr2.appendChild(td) // a sorhoz(tr) hozzasdjuk a td-t(cella)
+            } 
+            else if (index === 4) { // ha az index = 4 akkor megyunk be az elegazasba
+                let td = document.createElement('td') // létrehozunk egy td elemet
+                td.innerHTML = elem[i] // a td innerHtml-je az aktualis objektum i-dik tulajdonsaga lesz
+                tr2.appendChild(td) // a sorhoz(tr) hozzasdjuk a td-t(cella)
+            }
+            index += 1
         }
     }
 }
