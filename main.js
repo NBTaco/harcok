@@ -47,10 +47,10 @@ function fejlecGen(hasznaltobjektum){ //létrehozom a ffejlecGen függvény 1 pa
     }
 }
 
+formGeneralas() //meghivom a form generalaas fuggvenyt, azért elobb, mint a RenderTable-t, hogy a html-en is feljebb legyen mint a table
 
 const table = document.createElement('table') // Létrehozzuk a table- elemet, createElement bementi paramétere string (ez lesz a html tag)
 document.body.appendChild(table) //a table elemet hozzáadjuk a body- hoz
-
 
 function RenderTable(hasznalttomb){ //létrehoom a RenderTable függvényt, ebbe van benne a táblázat generálása egy hasznalttomb bemeneti parameterrel
 
@@ -125,6 +125,97 @@ function ketmezovalidalas(elsoelem, masodikelem, error) { //létrehozom a ketmez
 }
 
 const form = document.getElementById('form') //getElementById-val elkérem a html-ről a form-ot
+
+function formGeneralas(){ //Létrehozom a formGeneralas fuggvenyt
+    const form = document.createElement('form') // letrehozom a from elemet a html-re
+    form.id = 'form' //a from id-ját beallitom form-ra
+    form.action = '#' //az actiont beállítom #-re
+    document.body.appendChild(form) //a form-ot hozzáadom a body-hoz
+    const div = document.createElement('div') //létrehozok egy div elemet(div html elem)
+    form.appendChild(div) //a div elemet hozzáadom a form-hoz
+    const label = document.createElement('label') //létrehozok egy label html elemet(label)
+    label.innerHTML = "Harc megnevezése: " //a label szövegét beállítom "Harc megnevezése: "-re
+    div.appendChild(label) //a label t hozzáadom a div hez
+    const br = document.createElement('br') //létrehozok egy br elemet (br)
+    label.appendChild(br) // a labelhez hozzáadom a br-t
+    const input = document.createElement('input')// léterhozok egy input elemet (input)
+    input.type = 'text' //a type-ot beallitom txt-re
+    input.id = 'harc_nev' //az id-t beallitom "harc_nev"-re
+    input.name = 'harc_nev'  //a namet beallitom "harc_nev"-re
+    div.appendChild(input) //a div-hez hozzáadom az input-t
+    const error = document.createElement('span') //létrehozok egy error elemet (span mhtl tag lesz)
+    error.className = 'error' //az error osztalya 'error'
+    div.appendChild(error) //a div hez hozzaadom az error-t
+
+    const div2 = document.createElement('div')  //létrehozok egy div2 elemet(div html elem)
+    form.appendChild(div2) //a div2 elemet hozzáadom a form-hoz
+    const label2 = document.createElement('label') //létrehozok egy label2 html elemet(label)
+    label2.innerHTML = "1. Harcoló fél: " //a label szövegét beállítom "1. Harcoló fél: "-re
+    div2.appendChild(label2) //a label2 t hozzáadom a div2 hoz
+    const br2 = document.createElement('br') //létrehook egy br2 elemet (br)
+    label2.appendChild(br2) // a label2 hoz hozzáadom a br2-t
+    const input2 = document.createElement('input') // létrehozok egy input2 elemet (input)
+    input2.type = 'text' //a type-ot beallitom txt-re
+    input2.id = 'harcolo1' //az id-t beallitom "harcolo1"-re
+    input2.name = 'harcolo1'  //a namet beallitom "harcolo1"-re
+    div2.appendChild(input2) //a div2-hoz hozzáadom az input2-t
+    const error2 = document.createElement('span')  //létrehozok egy error2 elemet (span mhtl tag lesz)
+    error2.className = 'error' //az error2 osztalya 'error'
+    div2.appendChild(error2) //a div2 hez hozzaadom az error2-t
+
+    const div3 = document.createElement('div') //létrehozok egy div3 elemet(div html elem)
+    form.appendChild(div3) //a div3 elemet hozzáadom a form-hoz
+    const label3 = document.createElement('label') //létrehozok egy label3 html elemet(label)
+    label3.innerHTML = "1. Haderő: " //a label szövegét beállítom "1. Haderő: "-re
+    div3.appendChild(label3) //a label3 t hozzáadom a div3 hoz
+    const br3 = document.createElement('br')  //létrehozok egy br3 elemet (br)
+    label3.appendChild(br3)  // a label3 hoz hozzáadom a br3-t
+    const input3 = document.createElement('input') // létrehozok egy input3 elemet (input)
+    input3.type = 'text' //a type-ot beallitom txt-re
+    input3.id = 'hadero1' //az id-t beallitom "hadero1"-re
+    input3.name = 'hadero1'  //a namet beallitom "hadero1"-re
+    div3.appendChild(input3) //a div3-hozz hozzáadom az input3-t
+    const error3 = document.createElement('span')  //létrehozok egy error3 elemet (span mhtl tag lesz)
+    error3.className = 'error' //az error3 osztalya 'error'
+    div3.appendChild(error3) //a div3 hoz hozzaadom az error3-t
+
+    const div4 = document.createElement('div') //létrehozok egy div4 elemet(div html elem)
+    form.appendChild(div4) //a div4 elemet hozzáadom a form-hoz
+    const label4 = document.createElement('label') //létrehozok egy label4 html elemet(label)
+    label4.innerHTML = "2. Harcoló fél: " //a label szövegét beállítom "2. Harcoló fél: "-re
+    div4.appendChild(label4) //a label4 t hozzáadom a div4 hez
+    const br4 = document.createElement('br')  //létrehozok egy br4 elemet (br)
+    label4.appendChild(br4) // a label4 hez hozzáadom a br4-t
+    const input4 = document.createElement('input') // léterhozok egy input4 elemet (input)
+    input4.type = 'text' //a type-ot beallitom txt-re
+    input4.id = 'harcolo2' //az id-t beallitom "harcolo2"-re
+    input4.name = 'harcolo2' //a namet beallitom "harcolo2"-re
+    div4.appendChild(input4) //a div4-hozz hozzáadom az input4-t
+    const error4 = document.createElement('span')  //létrehozok egy error4 elemet (span mhtl tag lesz)
+    error4.className = 'error' //az error4 osztalya 'error'
+    div4.appendChild(error4) //a div4 hez hozzaadom az error4-t
+
+    const div5 = document.createElement('div') //létrehozok egy div5 elemet(div html elem)
+    form.appendChild(div5) //a div5 elemet hozzáadom a form-hoz
+    const label5 = document.createElement('label') //létrehozok egy label5 html elemet(label)
+    label5.innerHTML = "2. Haderő: " //a label szövegét beállítom "2. Haderő: "-re
+    div5.appendChild(label5) //a label5 t hozzáadom a div5 hoz
+    const br5 = document.createElement('br')  //létrehozok egy br5 elemet (br)
+    label5.appendChild(br5) // a label5 hez hozzáadom a br5-t
+    const input5 = document.createElement('input') // léterhozok egy input5 elemet (input)
+    input5.type = 'text' //a type-ot beallitom txt-re
+    input5.id = 'hadero2' //az id-t beallitom "hadero2"-re
+    input5.name = 'hadero2' //a namet beallitom "hadero2"-re 
+    div5.appendChild(input5) //a div5-hozz hozzáadom az input5-t
+    const error5 = document.createElement('span')  //létrehozok egy error5 elemet (span mhtl tag lesz)
+    error5.className = 'error' //az error5 osztalya 'error'
+    div5.appendChild(error5) //a div5 hez hozzaadom az error5-t
+
+    const button = document.createElement('button') //létrehozok egy button elemet (button tag a html en)
+    button.innerHTML = 'Hozzáadás' //a button szovege 'Hozzáadás'
+    form.appendChild(button) //a formhoz hozzáadom a buttotnt
+}
+
 
 form.addEventListener('submit', function(e){ //a form submit eseményére teszönk egy eseménykezelőt
     e.preventDefault() //meggatolom az alveto mukodest 
