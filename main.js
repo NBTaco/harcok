@@ -34,26 +34,26 @@ const tomb = [ //tomb letrehozasa, a tömb eleminek száma mindig egyel több, m
     }
 ]
 
-const formtomb = [
+const formtomb = [ //létrehozom a táblázatot a form-hoz
     {
-        label: "Harc megnevezése: ",
-        id: "harc_nev"
+        label: "Harc megnevezése: ", //a label tulajdonság a label szövege lesz később ("Harc megnevezése: ")
+        id: "harc_nev" //mivel az id meg a name később ugyanaz ezért csak egy id tulajdonságot hozok létre itt "harc_nev"
     },
     {
-        label: "1. Harcoló fél: ",
-        id: "harcolo1"
+        label: "1. Harcoló fél: ", //a label tulajdonság a label szövege lesz később ("1. Harcoló fél: ")
+        id: "harcolo1" //az id tualjdonság szövege "harcolo1"
     },
     {
-        label: "1. Haderő: ",
-        id: "hadero1"
+        label: "1. Haderő: ", //a label tulajdonság a label szövege lesz később ("1. Haderő: ")
+        id: "hadero1" //az id tualjdonság szövege "hadero1"
     },
     {
-        label: "2. Harcoló fél: ",
-        id: "harcolo2"
+        label: "2. Harcoló fél: ", //a label tulajdonság a label szövege lesz később ("2. Harcoló fél: ")
+        id: "harcolo2" //az id tualjdonság szövege "harcolo2"
     },
     {
-        label: "2. Haderő",
-        id: "hadero2"
+        label: "2. Haderő", //a label tulajdonság a label szövege lesz később ( "2. Haderő")
+        id: "hadero2" //az id tualjdonság szövege "hadero2"
     },
 
 ]
@@ -156,24 +156,24 @@ function formGeneralas(){ //Létrehozom a formGeneralas fuggvenyt
     form.action = '#' //az actiont beállítom #-re
     document.body.appendChild(form) //a form-ot hozzáadom a body-hoz
 
-    for(let i = 0; i < formtomb.length; i++){
+    for(let i = 0; i < formtomb.length; i++){ //egy i végigmegy a formtomb-ön, és az i-dik objektummal dolgozik
         const div = document.createElement('div') //létrehozok egy div elemet(div html elem)
         form.appendChild(div) //a div elemet hozzáadom a form-hoz
         const label = document.createElement('label') //létrehozok egy label html elemet(label)
-        label.innerHTML = formtomb[i].label //a label szövegét beállítom "Harc megnevezése: "-re
+        label.innerHTML = formtomb[i].label //a label szövegét beállítom az i-dik objektum label tulajdoságára
         div.appendChild(label) //a label t hozzáadom a div hez
         const br = document.createElement('br') //létrehozok egy br elemet (br)
         label.appendChild(br) // a labelhez hozzáadom a br-t
         const input = document.createElement('input')// léterhozok egy input elemet (input)
         input.type = 'text' //a type-ot beallitom txt-re
-        input.id = formtomb[i].id //az id-t beallitom "harc_nev"-re
-        input.name = formtomb[i].id  //a namet beallitom "harc_nev"-re
+        input.id = formtomb[i].id //az id-t beallitom az i-dik objektum id tulajdoságára
+        input.name = formtomb[i].id  //a namet beallitom az i-dik objektum id tulajdoságára
         div.appendChild(input) //a div-hez hozzáadom az input-t
         const error = document.createElement('span') //létrehozok egy error elemet (span mhtl tag lesz)
         error.className = 'error' //az error osztalya 'error'
         div.appendChild(error) //a div hez hozzaadom az error-t
     }
-    
+
     const button = document.createElement('button') //létrehozok egy button elemet (button tag a html en)
     button.innerHTML = 'Hozzáadás' //a button szovege 'Hozzáadás'
     form.appendChild(button) //a formhoz hozzáadom a buttotnt
