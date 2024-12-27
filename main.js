@@ -59,6 +59,10 @@ const formtomb = [ //létrehozom a táblázatot a form-hoz
 ]
 
 
+/**
+ * a függvény feladata az, hogy egy objektum (hasznaltobjektum) alapján létrehozza táblázat fejlécét
+ * @param {Object} hasznaltobjektum //Obejtum neve
+ */
 function fejlecGen(hasznaltobjektum){ //létrehozom a ffejlecGen függvény 1 paraméterrel, ami az objektum ami alapján generáljujk
     const thead = document.createElement('thead') //letrehozzuk a thead elemet
     table.appendChild(thead) //a table hez hozzáadjuk a thead-et
@@ -76,6 +80,11 @@ formGeneralas() //meghivom a form generalaas fuggvenyt, azért elobb, mint a Ren
 const table = document.createElement('table') // Létrehozzuk a table- elemet, createElement bementi paramétere string (ez lesz a html tag)
 document.body.appendChild(table) //a table elemet hozzáadjuk a body- hoz
 
+/**
+ * a függvény azt csinálja, hogy végigmegy egy tömbön (hasznalttomb paraméter) majd annak objektumai alapján 
+ * létrehoz sorokat, cellákat a táblázatba
+ * @param {Array<Object>} hasznalttomb //tömb neve
+ */
 function RenderTable(hasznalttomb){ //létrehoom a RenderTable függvényt, ebbe van benne a táblázat generálása egy hasznalttomb bemeneti parameterrel
 
     fejlecGen(fajlecObj) //meghivom a fejlecGen functiont, paramétere a fajlecObj
@@ -124,6 +133,13 @@ function RenderTable(hasznalttomb){ //létrehoom a RenderTable függvényt, ebbe
 
 RenderTable(tomb) //meghívom a RenderTable függvényt, legenerálódik a táblázat
 
+/**
+ * A függvény feladata az, hogy megnézi az első paramétert (validelem) hogy van e szövege, amennyiben nincs 
+ * kiírja az error szöveget (error paraméter)
+ * @param {HTMLElement} validelem validálni kívánt elem 
+ * @param {string} error error szövege
+ * @returns TRUE ha van szöveg a validelem-be , FALSE ha nincs benne szöveg
+ */
 function validalas(validelem, error){ //létrehozom a validalas() függvényt 2 bemenő paraméterrel(validelem, error)
     let valid = true // létrehozok egy valid elemet aminek az alap értéke true
     if(validelem.value === ""){ //a ha validelem bemeneti pararaméter szövege ures akkor megyunk be az elagazasba
@@ -137,6 +153,15 @@ function validalas(validelem, error){ //létrehozom a validalas() függvényt 2 
     return valid //a fuggveny a valid ertekevel ter vissza (true/false)
 }
 
+
+/**
+ * // a függvény feladata az, hogy összemér két elemet (elsoelem, masodikelem paraméterek). Ha mindekttő üres 
+ * akkor nem csinál semmit, de ha csak az egyik üres akkor az üreshez kiírja az errorszöveget (error paraméter)
+ * @param {HTMLElement} elsoelem 
+ * @param {HTMLElement} masodikelem 
+ * @param {string} error 
+ * @returns TRUE ha átmegy , FALSE ha nem
+ */
 function ketmezovalidalas(elsoelem, masodikelem, error) { //létrehozom a ketmezovalidalas() függvényt 3 bemenő paraméterrel(elsoelem, masodikelem, error)
     let valid = true // létrehozok egy valid elemet aminek az alap értéke true
     if (elsoelem.value != "" && !validalas(masodikelem, error)) { //akkkor megyunk be az elágazásba, ha a elsoelem nem ures, es a masodikelem validalasa false
@@ -150,6 +175,9 @@ function ketmezovalidalas(elsoelem, masodikelem, error) { //létrehozom a ketmez
 
 const form = document.getElementById('form') //getElementById-val elkérem a html-ről a form-ot
 
+/**
+ * A függvény feladata az, hogy létrehozza a formot az oldalon
+ */
 function formGeneralas(){ //Létrehozom a formGeneralas fuggvenyt
     const form = document.createElement('form') // letrehozom a from elemet a html-re
     form.id = 'form' //a from id-ját beallitom form-ra
